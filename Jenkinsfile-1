@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Hello') {
       steps {
-        sh 'echo Hello World'
+        echo 'Hello World vol 2'
         echo "Build number is ${currentBuild.number}"
       }
     }

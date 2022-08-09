@@ -1,22 +1,12 @@
 pipeline {
-    agent any 
-    environment {
-        CC = """${sh(
-                returnStdout: true,
-                script: 'echo "clang"'
-            )}"""
-        EXIT_STATUS = """${sh(
-                returnStatus: true,
-                script: 'exit 1'
-            )}"""
+    agent any
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
     }
     stages {
         stage('Example') {
-            environment {
-                DEBUG_FLAGS = '-g'
-            }
             steps {
-                sh 'printenv'
+                echo "${params.Greeting} World!"
             }
         }
     }
